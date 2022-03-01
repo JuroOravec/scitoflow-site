@@ -1,0 +1,65 @@
+h1,
+h2,
+h3,
+h4 {
+  font-family: sans-serif !important;
+  font-weight: 300 !important;
+}
+
+h4,
+h5,
+h6 {
+  padding-bottom: 10px;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2rem !important;
+  padding-bottom: 48px !important;
+  line-height: 2.75rem;
+
+  // Taken from .text-h2
+  letter-spacing: -0.0083333333em !important;
+  font-family: 'Roboto', sans-serif !important;
+}
+
+h2 {
+  font-size: 1.75rem !important;
+  padding-bottom: 24px !important;
+}
+
+h3 {
+  font-size: 1.5rem !important;
+  padding-bottom: 20px !important;
+}
+
+h4 {
+  font-size: 1.3rem !important;
+}
+
+p,
+pre,
+ul,
+ol {
+  margin-bottom: 20px;
+}
+
+a {
+  // Vuetify variable
+  color: var(--v-primary-darken1) !important;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+////////////////////
+// Util classes
+////////////////////
+
+.text-label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}

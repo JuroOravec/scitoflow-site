@@ -1,0 +1,11 @@
+{
+  "vetur.format.enable": false,
+  "vetur.experimental.templateInterpolationService": false,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  "vetur.grammar.customBlocks": {
+    "page-query": "graphql",
+    "static-query": "graphql"
+  }
+}

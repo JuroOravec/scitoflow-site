@@ -1,0 +1,64 @@
+// Inobtrusive styling for an anchor link
+.link-soft {
+  &a,
+  a {
+    color: initial !important;
+    text-decoration: none;
+
+    &:hover {
+      color: rgba(0, 0, 0, 0.67) !important;
+    }
+  }
+}
+
+// Slide the content to the right on hover
+// Generate hover-slide-x-0, hover-slide-x-1, hover-slide-x-2, ...
+@for $i from 0 through 16 {
+  .hover-slide-x-#{$i} {
+    transition: transform 0.5s ease;
+
+    &:hover {
+      transform: translateX($i * 4px);
+    }
+  }
+}
+
+// Slide the content up on hover
+// Generate hover-slide-y-0, hover-slide-y-1, hover-slide-y-2, ...
+@for $i from 0 through 16 {
+  .hover-slide-y-#{$i} {
+    transition: transform 0.5s ease;
+
+    &:hover {
+      transform: translateY($i * -4px);
+    }
+  }
+}
+
+// Generate gap-0, gap-1, gap-2, ...
+@for $i from 0 through 16 {
+  .gap-#{$i} {
+    gap: $i * 4px;
+  }
+}
+
+// Generate gap-x-0, gap-x-1, gap-x-2, ...
+@for $i from 0 through 16 {
+  .gap-x-#{$i} {
+    column-gap: $i * 4px;
+  }
+}
+
+// Generate gap-y-0, gap-y-1, gap-y-2, ...
+@for $i from 0 through 16 {
+  .gap-y-#{$i} {
+    row-gap: $i * 4px;
+  }
+}
+
+// Generate font-size-0, font-size-1, font-size-2, ...
+@for $i from 0 through 32 {
+  .font-size-#{$i} {
+    font-size: $i * 0.1rem;
+  }
+}

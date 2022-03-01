@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "lib": ["esnext", "dom"],
+    "isolatedModules": true,
+
+    "outDir": "dist/gridsome"
+  },
+  "files": [
+    "src/gridsome.server.ts",
+    "src/gridsome.config.ts",
+  ],
+}
