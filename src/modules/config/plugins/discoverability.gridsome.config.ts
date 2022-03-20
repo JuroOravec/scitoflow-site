@@ -1,20 +1,35 @@
+import path from 'path';
 import type { Item, FeedOptions } from 'feed';
+import glob from 'glob';
 
 import type { GridsomeConfig } from '@/typings/gridsome';
 import { PostType, PostCollectionNode } from '@/modules/post/postTypes';
 import { metadata } from '../metadata';
+import { formatUrlFromPath } from '@/modules/core/utils/url';
 
 /////////////////////////////////////
 // gridsome-plugin-feed CONFIG
 /////////////////////////////////////
 
+// Given a file asset, search for one of its versions among the rendered images
+let imgAssets: string[] | null = null;
+const formatAssetImgUrl = (assetFileName: string) => {
+  const fileBase = path.basename(assetFileName).split('.')[0];
+  if (!imgAssets) {
+    imgAssets = glob.sync(`dist/public/assets/static/*`).map((assetPath) => path.basename(assetPath));
+  }
+  const fileInAssets = imgAssets.find((assetFilename) => assetFilename.startsWith(fileBase));
+  if (!fileInAssets) return;
+
+  const mediaPath = formatUrlFromPath(metadata.siteUrl, `/assets/static/${fileInAssets}`);
+  return mediaPath;
+};
+
 /**
  * Transform Post (see @/modules/post/postType)
  * to FeedItem (see https://www.npmjs.com/package/feed#example)
  * */
-const postToFeedItem = (
-  post: PostCollectionNode,
-): Item => {
+const postToFeedItem = (post: PostCollectionNode): Item => {
   return {
     title: post.title,
     id: post.canonicalUrl,
@@ -27,22 +42,15 @@ const postToFeedItem = (
       email: author.email,
       link: author.url,
     })),
-    contributor: post.contributors?.map((contributor) => ({
+    // prettier-ignore
+    contributor: post.contributors?.map((contributor) => ({ // TODO: Untested
       name: contributor.fullName,
       email: contributor.email,
       link: contributor.url,
     })),
-    // Note: We don't have access to public URL of the posts' images.
-    // We only have access to the local path, and that throws error.
-    // 
-    // It could be obtained from pluginAPI._app._assets, but it'd be a lot of guesswork,
-    // And too deeply interacting with gridsome's internals.
-    // I also tried wondered if we could generate the URLs at onNodeCreate, but that's also
-    // cumbersome.
-    //
-    // image: post.images[0]?.path,
-    // audio: post.audios[0]?.path,
-    // video: post.mainVideo?.url
+    image: post.images?.[0] ? formatAssetImgUrl(post.images[0].path) : undefined,
+    audio: post.audios?.[0]?.path, // TODO: Untested
+    video: post.mainVideo?.url, // TODO: Untested
   };
 };
 

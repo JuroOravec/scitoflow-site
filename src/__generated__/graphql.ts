@@ -257,6 +257,8 @@ export type GqlJSONQueryOperatorInput = {
 
 export type GqlMetadata = {
   __typename?: 'Metadata';
+  analytics?: Maybe<GqlMetadata_Analytics>;
+  comments?: Maybe<GqlMetadata_Comments>;
   icon?: Maybe<GqlMetadata_Icon>;
   lang?: Maybe<GqlMetadata_Lang>;
   pathPrefix?: Maybe<Scalars['String']>;
@@ -275,6 +277,20 @@ export type GqlMetadata = {
 export type GqlMetadatasiteLastUpdatedArgs = {
   format?: InputMaybe<Scalars['String']>;
   locale?: InputMaybe<Scalars['String']>;
+};
+
+export type GqlMetadata_Analytics = {
+  __typename?: 'Metadata_Analytics';
+  mixpanelToken?: Maybe<Scalars['String']>;
+  sentryIngest?: Maybe<Scalars['String']>;
+};
+
+export type GqlMetadata_Comments = {
+  __typename?: 'Metadata_Comments';
+  vssueClientId?: Maybe<Scalars['String']>;
+  vssueClientSecret?: Maybe<Scalars['String']>;
+  vssueGithubRepo?: Maybe<Scalars['String']>;
+  vssueGithubUser?: Maybe<Scalars['String']>;
 };
 
 export type GqlMetadata_Icon = {
@@ -927,6 +943,11 @@ export type GqlgetHomeDataQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GqlgetHomeDataQuery = { __typename?: 'Query', blogs?: { __typename?: 'BlogPostConnection', edges?: Array<{ __typename?: 'BlogPostEdge', node?: { __typename?: 'BlogPost', postId: string, path: string, title: string, description: string, datePublished?: any | null, images: Array<{ __typename?: 'PostImage', path?: GridsomeImage | null, alt: string }> } | null } | null> | null } | null, projects?: { __typename?: 'ProjectPostConnection', edges?: Array<{ __typename?: 'ProjectPostEdge', node?: { __typename?: 'ProjectPost', postId: string, path: string, title: string, description: string, datePublished?: any | null, images: Array<{ __typename?: 'PostImage', path?: GridsomeImage | null, alt: string }> } | null } | null> | null } | null, metadata?: { __typename?: 'Metadata', siteDescription?: string | null } | null };
 
+export type GqlgetPostMetaMetadataQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GqlgetPostMetaMetadataQuery = { __typename?: 'Query', metadata?: { __typename?: 'Metadata', siteUrl?: string | null } | null };
+
 export type GqlgetBlogPostByPathQueryVariables = Exact<{
   id: Scalars['ID'];
 }>;
@@ -951,4 +972,4 @@ export type GqlgetAllProjectsQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GqlgetAllProjectsQuery = { __typename?: 'Query', posts?: { __typename?: 'ProjectPostConnection', edges?: Array<{ __typename?: 'ProjectPostEdge', node?: { __typename?: 'ProjectPost', postId: string, path: string, title: string, description: string, datePublished?: any | null, images: Array<{ __typename?: 'PostImage', path?: GridsomeImage | null, alt: string }> } | null } | null> | null } | null };
 
-// Generated on 2022-02-27T21:13:56+00:00
+// Generated on 2022-03-20T17:58:38+01:00

@@ -58,13 +58,13 @@ export const pwaConfigGridsome: GridsomeConfig = {
         gcmSenderId: undefined, // Optional
 
         // Standard Meta Tags
-        svgFavicon: metadata.icon.favicon.svg,
+        // svgFavicon: metadata.icon.favicon.svg,
 
         // Microsoft Windows Meta Tags
         msTileColor: metadata.icon.maskColor,
 
         // Apple MacOS Meta Tags
-        appleMaskIcon: metadata.icon.favicon.svg,
+        // appleMaskIcon: metadata.icon.favicon.svg,
         appleMaskIconColor: metadata.icon.maskColor,
       },
     },

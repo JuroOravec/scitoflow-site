@@ -3,6 +3,7 @@ import sizeOf from 'image-size';
 
 import type { PostType } from './postTypes';
 import type { GqlPost } from '@/__generated__/graphql';
+import { formatAssetMediaPath } from '../core/utils/url';
 
 interface PostMetadata {
   id: string;
@@ -51,4 +52,13 @@ export const imageSizeResolver = Object.freeze({
     const dimensions = sizeOf(obj.path);
     return dimensions;
   },
+});
+
+/**
+ * Update the local path to the media object (eg PostVideo or PostAudio).
+ * At build time, these are exported to `${public_path}/assets/media/filename.ext`.
+ */
+export const mediaPathResolver = Object.freeze({
+  type: 'String!',
+  resolve: (obj) => formatAssetMediaPath(obj.path),
 });

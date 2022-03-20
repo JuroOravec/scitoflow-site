@@ -12,6 +12,7 @@
     "explore": "run-s prebuild validate explore:nocheck",
     "explore:nocheck": "gridsome explore",
     "validate": "node ./scripts/validateFrontmatter.js",
+    "gen": "npm run gql:gen",
     "gql:gen": "node ./scripts/graphqlCodegen.js",
     "gql:gen:noserver": "graphql-codegen --config codegen.yml"
   },

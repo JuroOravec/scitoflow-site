@@ -55,6 +55,7 @@ import {
   MetaInfoLocaleArgs,
   TwitterType,
 } from '../utils/metaInfo';
+import { formatUrlFromPath } from '../utils/url';
 
 export interface OgAndTwitterVideo extends CreateOgVideoPageTagsArgs {
   /** URL to the webpage with video player */
@@ -149,8 +150,9 @@ const Meta = defineComponent({
     const siteAuthor = computed((): string | null => queryResult.value?.metadata?.siteAuthor?.fullName ?? null); // prettier-ignore
     const siteImage = computed((): CreateOgImageTagsArgs => {
       const { alt, image } = queryResult.value?.metadata?.siteImage ?? {};
+      const url = (image?.src && siteUrl.value) ? formatUrlFromPath(siteUrl.value, image.src) : null;
       return {
-        url: image?.src ? `${siteUrl.value}${image?.src}` : null,
+        url,
         alt,
         mimeType: image?.mimeType,
         width: image?.size.width,
@@ -158,11 +160,12 @@ const Meta = defineComponent({
       };
     });
 
-    const pageCanonicalUrl = computed((): string | null =>
-      pageUrl?.value ?? siteUrl.value
-        ? `${siteUrl.value}${instance?.proxy.$route?.path}`
-        : null,
-    );
+    const pageCanonicalUrl = computed((): string | null => {
+      if (pageUrl?.value) return pageUrl.value;
+      const pagePath = instance?.proxy.$route?.path;
+      const canonicalUrl = (siteUrl.value && pagePath) ? formatUrlFromPath(siteUrl.value, pagePath) : null;
+      return canonicalUrl;
+    });
 
     const usedPageTitle = computed((): string | null => {
       return typeof pageTitle?.value === 'string'

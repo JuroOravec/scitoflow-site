@@ -1,5 +1,6 @@
 import type { SocialType } from '@/modules/core/utils/socials';
 import type { OgProfileGender } from '@/modules/core/utils/metaTagsOpenGraph';
+import { formatUrlFromStaticPath, formatUrlFromPath } from '../core/utils/url';
 
 export interface GridsomeConfigMetadata {
   siteName: string;
@@ -15,10 +16,7 @@ export interface GridsomeConfigMetadata {
     gender: OgProfileGender;
   };
   siteImage: {
-    /**
-     * Note: In GraphQL, if this is an absolute path, it will be automatically converted
-     * to Image type
-     */
+    /** Absolute path that's converted to Image type at GraphQL interface */
     image: string;
     url: string;
     alt: string;
@@ -34,9 +32,12 @@ export interface GridsomeConfigMetadata {
   };
   icon: {
     favicon: {
+      /** Absolute path that's converted to Image type at GraphQL interface */
       png: string;
+      /** Absolute path that's converted to Image type at GraphQL interface */
       svg: string;
     };
+    /** Absolute path that's converted to Image type at GraphQL interface */
     touchicon: string;
     maskColor: string;
   };
@@ -58,8 +59,8 @@ export interface GridsomeConfigMetadata {
 }
 
 const cwd = process.cwd();
-const remoteSiteUrl = 'https://scitoflow.com/';
-const localSiteUrl = 'http://localhost:8080/';
+const remoteSiteUrl = 'https://scitoflow.com';
+const localSiteUrl = 'http://localhost:8080';
 const siteUrl =
   process.env.SITE_URL || process.env.NODE_ENV === 'development'
     ? localSiteUrl
@@ -77,14 +78,14 @@ export const metadata: GridsomeConfigMetadata = {
     lastName: 'Oravec',
     fullName: 'Juro Oravec',
     email,
-    url: `https://jurora.vc/about`,
+    url: 'https://jurora.vc/about',
     gender: 'male',
   },
   // This image will be shown on social shares
   // See https://stackoverflow.com/a/19632390/9788634
   siteImage: {
     image: `${cwd}/static/imgs/profile-pic-front-white-bg-cc-sq-md.png`,
-    url: `${siteUrl}/imgs/profile-pic-front-white-bg-cc-sq-md.png`,
+    url: formatUrlFromStaticPath(siteUrl, './static/imgs/profile-pic-front-white-bg-cc-sq-md.png'), // prettier-ignore
     alt: 'Photo of Juro Oravec',
   },
   siteCopyright: 'All rights reserved, Scitoflow',
@@ -117,7 +118,7 @@ export const metadata: GridsomeConfigMetadata = {
     twitterOrg: '', // e.g. @nytimes
     github: 'jurooravec',
     devto: 'jurooravec',
-    rss: `${siteUrl}feed.xml`,
+    rss: formatUrlFromPath(siteUrl, '/feed.xml'),
     linkedin: 'jurooravec',
     instagram: 'jurooravec',
     youtube: 'UC8JdqB5j16JkQ1a3RHdCejQ',

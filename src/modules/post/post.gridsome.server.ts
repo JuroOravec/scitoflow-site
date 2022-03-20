@@ -5,13 +5,14 @@ import type { GridsomeServerPlugin } from '@/typings/gridsome';
 import type { PostCollectionNode, PostInput } from './postTypes';
 import { postSchema } from './postSchema';
 import { PostResourceType, PostType } from './postTypes';
-import { imageSizeResolver, mimeTypeResolver } from './postResolvers';
+import { imageSizeResolver, mediaPathResolver, mimeTypeResolver } from './postResolvers';
 import type { CollectionNode } from '../core/coreModel';
 import {
-  getPostCanonicalUrl,
   getPostPersonFullName,
   resolveFrontmatterMetadata,
 } from './utils';
+import { metadata } from '../config/metadata';
+import { formatUrlFromPath } from '../core/utils/url';
 
 export const postGridsomeServerPlugin: GridsomeServerPlugin = (api) => {
   api.loadSource(({ addSchemaTypes, addSchemaResolvers }) => {
@@ -25,6 +26,7 @@ export const postGridsomeServerPlugin: GridsomeServerPlugin = (api) => {
       // Add helper resolvers to PostResource types
       [PostResourceType.AUDIO]: {
         mimeType: mimeTypeResolver,
+        path: mediaPathResolver,
       },
       [PostResourceType.IMAGE]: {
         mimeType: mimeTypeResolver,
@@ -32,6 +34,7 @@ export const postGridsomeServerPlugin: GridsomeServerPlugin = (api) => {
       },
       [PostResourceType.VIDEO]: {
         mimeType: mimeTypeResolver,
+        path: mediaPathResolver,
       },
     });
   });
@@ -60,7 +63,7 @@ export const postGridsomeServerPlugin: GridsomeServerPlugin = (api) => {
           ...nodeWithMetadata.internal,
           typeName: nodeWithMetadata.internal.typeName as PostType,
         },
-        canonicalUrl: getPostCanonicalUrl(nodeWithMetadata),
+        canonicalUrl: formatUrlFromPath(metadata.siteUrl, nodeWithMetadata.path),
         authors: nodeWithMetadata.authors.map((author) => ({
           ...author,
           fullName: getPostPersonFullName(author),
@@ -71,7 +74,7 @@ export const postGridsomeServerPlugin: GridsomeServerPlugin = (api) => {
         })),
         datePublished: nodeWithMetadata.datePublished as any as Date,
         dateModified: nodeWithMetadata.dateModified as any as Date,
-        dateExpired: nodeWithMetadata.dateModified as any as Date | null,
+        dateExpired: nodeWithMetadata.dateExpired as any as Date | null,
         timeToRead: readingTime(nodeWithMetadata.content || ''),
       };
 

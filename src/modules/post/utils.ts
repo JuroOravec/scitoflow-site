@@ -5,16 +5,7 @@ import get from 'lodash/get';
 
 import { metadata } from '../config/metadata';
 import type { CollectionNode } from '../core/coreModel';
-import type { PostCollectionNode, PostCollectionNodePerson, PostInput } from './postTypes';
-
-export const getUrlFromPath = (path: string) => {
-  return `${metadata.siteUrl}${path}`;
-};
-
-/** Get the canonical URL for a given Post */
-export const getPostCanonicalUrl = (post: Pick<PostCollectionNode, 'path'>) => {
-  return getUrlFromPath(post.path);
-};
+import type { PostCollectionNodePerson, PostInput } from './postTypes';
 
 /** Get the full name for a given PostPerson */
 export const getPostPersonFullName = (

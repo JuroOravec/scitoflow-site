@@ -1,3 +1,5 @@
+import { formatUrlFromPath } from "./url";
+
 export enum SocialType {
   EMAIL = 'email',
   DEVTO = 'devto',
@@ -57,7 +59,7 @@ export const SOCIALS: Record<SocialType, Social> = {
   rss: {
     name: 'RSS',
     icon: 'mdi-rss',
-    getLink: (siteUrl) => siteUrl,
+    getLink: (siteUrl) => formatUrlFromPath(siteUrl, '/feed.xml'),
   },
   soundcloud: {
     name: 'SoundCloud',
