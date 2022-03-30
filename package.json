@@ -33,6 +33,7 @@
     "graphql": "Force-bump graphql to v15 in gridsome@0.7.23 to enable interfaces to implement other interfaces."
   },
   "dependencies": {
+    "@fontsource/jost": "^4.5.4",
     "@types/joi": "^17.2.3",
     "@vssue/api-github-v3": "^1.4.7",
     "@vue/composition-api": "^1.4.5",

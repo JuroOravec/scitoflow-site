@@ -14,7 +14,8 @@
       <AppHeaderHomeLink />
     </div>
 
-    <SearchBox dense />
+    <!-- TODO: Enable once we've got some posts  -->
+    <!-- <SearchBox dense /> -->
 
     <nav
       v-if="large"

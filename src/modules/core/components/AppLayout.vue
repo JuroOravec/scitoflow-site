@@ -84,9 +84,10 @@ const layoutTypeToComponent: Record<LayoutType, Component> = {
 };
 
 const navItems: NavItem[] = [
-  { to: PostBlogRoutes.BLOGS, text: 'Blog' },
-  { to: PostProjectRoutes.PROJECTS, text: 'Projects' },
-  { to: '/about', text: 'About' },
+  // TODO: Enable once there's some content
+  // { to: PostBlogRoutes.BLOGS, text: 'Blog' },
+  // { to: PostProjectRoutes.PROJECTS, text: 'Episodes' },
+  // { to: '/about', text: 'About' },
 ];
 
 const AppLayout = defineComponent({

@@ -103,10 +103,10 @@ export const metadata: GridsomeConfigMetadata = {
   },
   icon: {
     favicon: {
-      png: `${cwd}/static/imgs/logo-3412.png`,
-      svg: `${cwd}/static/imgs/logo-3412.svg`,
+      png: `${cwd}/static/imgs/scitoflow-logo-notext.png`,
+      svg: `${cwd}/static/imgs/scitoflow-logo-notext.svg`,
     },
-    touchicon: `${cwd}/static/imgs/logo-3412.png`,
+    touchicon: `${cwd}/static/imgs/scitoflow-logo-notext.png`,
     maskColor: '#666600',
   },
   social: {
@@ -126,13 +126,13 @@ export const metadata: GridsomeConfigMetadata = {
     twitch: 'freefalltwelve',
   },
   analytics: {
-    mixpanelToken: '3fb69e184e68f2263e55a48c65a07874',
-    sentryIngest: 'https://62a4aa8f7e164aaf83d6f6b393acd290@o470159.ingest.sentry.io/6237843',
+    mixpanelToken: process.env.GRIDSOME_MIXPANEL_TOKEN ?? '',
+    sentryIngest: process.env.GRIDSOME_SENTRY_INGEST ?? '',
   },
   comments: {
     vssueGithubUser: 'JuroOravec',
     vssueGithubRepo: 'scitoflow-site',
-    vssueClientId: '0df24136a8dea53dc58a',
-    vssueClientSecret: 'ab4df41bec3522389d4c1a5ee602e88f971e940b',
+    vssueClientId: process.env.GRIDSOME_VSSUE_CLIENT_ID ?? '',
+    vssueClientSecret: process.env.GRIDSOME_VSSUE_CLIENT_SECRET ?? '',
   },
 };

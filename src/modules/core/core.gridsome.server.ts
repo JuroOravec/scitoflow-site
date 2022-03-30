@@ -1,26 +1,8 @@
-import type {
-  GridsomePluginCreatePageOptions,
-  GridsomeServerPlugin,
-} from '@/typings/gridsome';
+import type { GridsomeServerPlugin } from '@/typings/gridsome';
 import { print as printTypeDef } from 'graphql/language/printer';
 
+import { coreRoutes } from './coreRoutes';
 import { coreSchema } from './coreSchema';
-import { CoreRoutes } from './coreTypes';
-
-const corePages: GridsomePluginCreatePageOptions[] = [
-  {
-    path: CoreRoutes.HOME,
-    component: './src/modules/core/pages/Home.vue',
-  },
-  {
-    path: CoreRoutes.ABOUT,
-    component: './src/modules/core/pages/About.vue',
-  },
-  {
-    path: CoreRoutes.NOT_FOUND,
-    component: './src/modules/core/pages/Error404.vue',
-  },
-];
 
 export const coreGridsomeServerPlugin: GridsomeServerPlugin = (api) => {
   api.loadSource(({ addSchemaTypes }) => {
@@ -31,6 +13,6 @@ export const coreGridsomeServerPlugin: GridsomeServerPlugin = (api) => {
   });
 
   api.createPages(({ createPage }) => {
-    corePages.forEach((pageOptions) => createPage(pageOptions));
+    coreRoutes.forEach((pageOptions) => createPage(pageOptions));
   });
 };

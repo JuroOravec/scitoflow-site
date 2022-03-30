@@ -1,9 +1,7 @@
 // This is the main.js file. Import global CSS and scripts here.
 import 'vuetify/dist/vuetify.min.css';
-
 import 'prismjs/themes/prism.css';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
-
 import 'gridsome-plugin-remark-container/themes/classic.css';
 
 import '@/modules/core/style/main.scss';

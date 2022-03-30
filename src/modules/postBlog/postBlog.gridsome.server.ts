@@ -1,20 +1,10 @@
 import { print as printTypeDef } from 'graphql/language/printer';
 
-import type {
-  GridsomePluginCreatePageOptions,
-  GridsomeServerPlugin,
-} from '@/typings/gridsome';
+import type { GridsomeServerPlugin } from '@/typings/gridsome';
 import { blogPostSchema } from './postBlogSchema';
 import { createRelatedPostsResolver } from '../post/postResolvers';
 import { PostType } from '../post/postTypes';
-import { PostBlogRoutes } from './postBlogTypes';
-
-const postBlogPages: GridsomePluginCreatePageOptions[] = [
-  {
-    path: PostBlogRoutes.BLOGS,
-    component: './src/modules/postBlog/pages/Blogs.vue',
-  },
-];
+import { postBlogRoutes } from './postBlogRoutes';
 
 export const postBlogGridsomeServerPlugin: GridsomeServerPlugin = (api) => {
   api.loadSource(({ addSchemaTypes, addSchemaResolvers, getNode }) => {
@@ -43,6 +33,6 @@ export const postBlogGridsomeServerPlugin: GridsomeServerPlugin = (api) => {
   });
 
   api.createPages(({ createPage }) => {
-    postBlogPages.forEach((pageOptions) => createPage(pageOptions));
+    postBlogRoutes.forEach((pageOptions) => createPage(pageOptions));
   });
 };
