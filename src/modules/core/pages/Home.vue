@@ -250,7 +250,7 @@ export default Home;
     position: absolute;
     max-width: unset;
     min-height: 600px;
-    width: 200%;
+    width: 400%;
     background-image: url('~@/modules/core/assets/imgs/scitoflow-logo-pattern2.png');
     background-size: 200px;
     background-repeat: repeat;
