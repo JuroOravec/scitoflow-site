@@ -84,9 +84,9 @@ export const metadata: GridsomeConfigMetadata = {
   // This image will be shown on social shares
   // See https://stackoverflow.com/a/19632390/9788634
   siteImage: {
-    image: `${cwd}/static/imgs/profile-pic-front-white-bg-cc-sq-md.png`,
-    url: formatUrlFromStaticPath(siteUrl, './static/imgs/profile-pic-front-white-bg-cc-sq-md.png'), // prettier-ignore
-    alt: 'Photo of Juro Oravec',
+    image: `${cwd}/static/imgs/scitoflow-logo.png`,
+    url: formatUrlFromStaticPath(siteUrl, './static/imgs/scitoflow-logo.png'), // prettier-ignore
+    alt: 'Scitoflow',
   },
   siteCopyright: 'All rights reserved, Scitoflow',
   siteLastUpdated: new Date('2022-03-01'),
