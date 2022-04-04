@@ -21,9 +21,9 @@
       style="margin-top: 600px"
     >
       <p class="text-h5 pb-8">
-        Scitoflow is where we explore the behind-the-scenes of doing science.
-        The boring, the tedious, the things you don't hear in the news, the… Oh,
-        you want fun? Curiosity is the fun here!
+        Scitoflow is where we explore the behind-the-scenes processes of doing
+        science. The boring, the tedious, the things you don't hear in the news,
+        the… Oh, you want fun? Curiosity is the fun here!
       </p>
 
       <div class="text-center pb-8">
