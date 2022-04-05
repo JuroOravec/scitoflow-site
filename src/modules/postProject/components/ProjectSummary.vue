@@ -45,7 +45,7 @@
             v-if="post.projectUrl"
             :href="post.projectUrl"
             target="_blank"
-            rel="nofollow noopener noreferrer"
+            rel="noopener"
           >
             {{ formatUrl(post.projectUrl) }}
             <v-icon size="14" :style="{ marginTop: '-2px' }">mdi-open-in-new</v-icon>

@@ -65,7 +65,7 @@ const wrapperDefinitions: Record<
     attrs: {
       href: socialUrl,
       target: '_blank',
-      rel: 'nofollow noopener noreferrer',
+      rel: 'noopener',
     },
   }),
   /** Link that's triggered from JS, to obscure the URL from bots */
@@ -73,7 +73,7 @@ const wrapperDefinitions: Record<
     listeners: {
       click: () => {
         if (socialUrl) {
-          globalThis.open(socialUrl, '_blank', 'noreferrer, noopener');
+          globalThis.open(socialUrl, '_blank', 'noopener');
         }
       },
     },
