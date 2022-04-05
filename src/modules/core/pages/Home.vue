@@ -97,6 +97,7 @@
         <g-image
           src="../assets/imgs/profile-pic-front-white-bg-cc-sq-md.png"
           width="250"
+          :class="{ 'mt-n4': $vuetify.breakpoint.smAndUp }"
         />
         <div>
           <p>
@@ -114,7 +115,7 @@
             opposites, but I think they're closer than it seems.
           </p>
           <p>
-            <a href="https://jurora.vc/about">Find more about me here</a>
+            <a href="https://jurora.vc/about">Find more about me on my web</a>
           </p>
         </div>
       </div>
